@@ -1,0 +1,11 @@
+This class is designed to replace the ucfthes class, which is based upon an older thesis class that uses a significant amount of plain TeX to meet its formatting requirements.
+
+Design Goals:
+1. Separate logical formatting from layout details
+The user's documents will not need to contain formatting details.
+
+2. Use LaTeX commands, not plain TeX
+
+3. Use standard packages to meet formatting requirements
+
+4. Be as consistent as possible with the latest LaTeX standards

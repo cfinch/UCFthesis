@@ -1,4 +1,20 @@
-This class is designed to replace the ucfthes class, which is based upon an older thesis class that uses a significant amount of plain TeX to meet its formatting requirements.
+This class is designed to replace the ucfthes class, which is based upon an
+older thesis class that uses a significant amount of plain TeX to meet its
+formatting requirements.
+
+Usage:
+Install this class using the standard method for you TeX distribution.  For
+help, see:
+http://en.wikibooks.org/wiki/LaTeX/Packages/Installing_Extra_Packages
+Move the UCFthesis directory into a standard location for your TeX
+distribution.  For example, on a Linux system it could go into 
+/home/your_username/texmf/tex/latex/.  You then need to tell TeX to find the
+new class--on Linux, run texhash (you may need to have superuser privileges for
+this to work.)  
+
+If you are using Lyx (http://www.lyx.org/), copy the file UCFthesis.layout to a
+directory where Lyx can find it (such as /home/your_username/.lyx/layouts).  In
+Lyx, go to Tools->Reconfigure and then restart Lyx.
 
 Design Goals:
 1. Separate logical formatting from layout details

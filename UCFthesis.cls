@@ -171,8 +171,6 @@ Major Professor: \printadvisor
 \thispagestyle{plain}
 \begin{center}
 \vspace*{1.5cm}
-\phantomsection \label{abstract}
-\pdfbookmark[1]{ABSTRACT}{abstract}
 \Large \MakeUppercase{Abstract}
 \end{center}
 \vspace{0.5cm}
@@ -184,8 +182,6 @@ Major Professor: \printadvisor
 \thispagestyle{plain}
 \begin{center}
 \vspace*{1.5cm}
-\phantomsection \label{ack}
-\pdfbookmark[1]{ACKNOWLEDGEMENTS}{ack}
 \Large \MakeUppercase{Acknowledgements}
 \end{center}
 \vspace{0.5cm}

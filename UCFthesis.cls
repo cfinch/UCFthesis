@@ -10,6 +10,14 @@
 \LoadClassWithOptions{report}
 \RequirePackage{graphicx}
 
+% Need to load babel here. Otherwise it will override the name set below
+% for the table of contents.
+\RequirePackage{babel}
+\addto\captionsenglish{%
+  \renewcommand{\contentsname}%
+    {TABLE OF CONTENTS}%
+}
+
 % Margins
 \RequirePackage[top=1.0in, bottom=1in, left=1in, right=1in]{geometry}
 
@@ -163,6 +171,8 @@ Major Professor: \printadvisor
 \thispagestyle{plain}
 \begin{center}
 \vspace*{1.5cm}
+\phantomsection \label{abstract}
+\pdfbookmark[1]{ABSTRACT}{abstract}
 \Large \MakeUppercase{Abstract}
 \end{center}
 \vspace{0.5cm}
@@ -174,6 +184,8 @@ Major Professor: \printadvisor
 \thispagestyle{plain}
 \begin{center}
 \vspace*{1.5cm}
+\phantomsection \label{ack}
+\pdfbookmark[1]{ACKNOWLEDGEMENTS}{ack}
 \Large \MakeUppercase{Acknowledgements}
 \end{center}
 \vspace{0.5cm}

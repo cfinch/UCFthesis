@@ -8,12 +8,10 @@
 
 % More declarations
 \LoadClassWithOptions{report}
-
-\RequirePackage{hyperref}
 \RequirePackage{graphicx}
 
 % Margins
-\RequirePackage[top=1.25in, bottom=1in, left=1in, right=1in]{geometry}
+\RequirePackage[top=1.0in, bottom=1in, left=1in, right=1in]{geometry}
 
 % Format titles and headings
 % \titleformat{command} [shape] {format} {label} {sep} {before} {after}
@@ -25,12 +23,14 @@
 	{1ex} {} {}
 \titleformat{\subsection} [block] {\centering \itshape} {} 
 	{1ex} {} {}
-	\titleformat{\subsubsection} [block] {\raggedright \itshape} {} 
+\titleformat{\subsubsection} [block] {\raggedright \itshape} {} 
 	{1ex} {} {}
 \setcounter{secnumdepth}{0}	% Don't print section numbers
 
 % Format table of contents, list of figures, and list of tables
 \RequirePackage[]{tocloft}
+
+\setcounter{tocdepth}{4}
 
 % Table of Contents
 \renewcommand{\cfttoctitlefont}{\hfill\Large\MakeUppercase}
@@ -95,7 +95,6 @@
 
 % Line spacing
 \RequirePackage{setspace}
-\doublespacing
 
 % Default font size
 \renewcommand{\normalsize}{\fontsize{12}{12}\selectfont}
@@ -104,7 +103,48 @@
 \RequirePackage[format=plain, labelformat=simple, font=normalsize]{caption}
 \captionsetup[table]{justification=raggedright, singlelinecheck=false}
 
+% Subfigures
 \RequirePackage{subfig}
+
+% Hyperlinks, including PDF bookmarks
+\RequirePackage{hyperref}
+
+% Title page commands
+\renewcommand{\title}[1]{\newcommand{\printtitle}{\MakeUppercase{#1}}}
+\renewcommand{\author}[1]{\newcommand{\printauthor}{\MakeUppercase{#1}}}
+\newcommand{\priordegrees}[1]{\newcommand{\printpriordegrees}{#1}}
+\newcommand{\degree}[1]{\newcommand{\printdegree}{#1}}
+\newcommand{\department}[1]{\newcommand{\printdepartment}{#1}}
+\newcommand{\college}[1]{\newcommand{\printcollege}{#1}}
+\newcommand{\term}[1]{\newcommand{\printterm}{#1}}
+\newcommand{\advisor}[1]{\newcommand{\printadvisor}{#1}}
+
+\renewcommand{\maketitle} {
+\newgeometry{top=2.0in, bottom=1in, left=1in, right=1in}
+\thispagestyle{empty}
+\singlespacing
+\begin{center}
+\printtitle \\
+\vspace{1.0 in}
+by \\
+\vspace{1.0 in}
+\printauthor \\
+\printpriordegrees \\
+\vspace{0.75 in}
+A dissertation submitted in partial fulfillment of the requirements \\
+for the degree of \printdegree \\
+in \printdepartment \\
+in the \printcollege \\
+at the University of Central Florida \\
+Orlando, Florida\\
+\vspace{1 in}
+\printterm \\
+\vspace{1 in}
+Major Professor: \printadvisor
+\end{center}
+\doublespacing
+\restoregeometry
+}
 
 % Special environments
 \newenvironment{UCFcopyright}
@@ -119,20 +159,26 @@
 
 \renewenvironment{abstract}
 {\newpage
+\label{abstract_label} \pdfbookmark[0]{ABSTRACT}{abstract_label}
 \thispagestyle{plain}
 \begin{center}
 \vspace*{1.5cm}
 \Large \MakeUppercase{Abstract}
 \end{center}
-\vspace{0.5cm}} {}
+\vspace{0.5cm}
+} {}
 
 \newenvironment{acknowledgements}
 {\newpage
+\label{ack_label} \pdfbookmark[0]{ACKNOWLEDGEMENTS}{ack_label}
 \thispagestyle{plain}
 \begin{center}
 \vspace*{1.5cm}
 \Large \MakeUppercase{Acknowledgements}
 \end{center}
-\vspace{0.5cm}} {}
+\vspace{0.5cm}
+} {}
 
 \pagestyle{plain}
+\doublespacing
+

@@ -19,7 +19,7 @@
 }
 
 % Margins
-\RequirePackage[top=1.0in, bottom=1in, left=1in, right=1in]{geometry}
+\RequirePackage[top=1.0in, bottom=1in, left=1in, right=1in, includefoot]{geometry}
 
 % Format titles and headings
 % \titleformat{command} [shape] {format} {label} {sep} {before} {after}

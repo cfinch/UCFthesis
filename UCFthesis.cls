@@ -13,26 +13,29 @@
 % Need to load babel here. Otherwise it will override the name set below
 % for the table of contents.
 \RequirePackage{babel}
-\addto\captionsenglish{%
-  \renewcommand{\contentsname}%
-    {TABLE OF CONTENTS}%
+\addto\captionsenglish{
+  \renewcommand{\contentsname}{TABLE OF CONTENTS}
+  \renewcommand{\bibname}{LIST OF REFERENCES}
 }
 
 % Margins
 \RequirePackage[top=1.0in, bottom=1in, left=1in, right=1in, includefoot]{geometry}
 
+% Line spacing
+\RequirePackage{setspace}
+
 % Format titles and headings
 % \titleformat{command} [shape] {format} {label} {sep} {before} {after}
 \RequirePackage{titlesec}
-\titleformat{\chapter} [block] {\centering \normalfont} 
+\titleformat{\chapter} [block] {\centering \singlespacing \normalfont} 
 	{\MakeUppercase{\chaptertitlename} \thechapter.} 
-	{1ex} {\MakeUppercase} {}
-\titleformat{\section} [block] {\centering \normalfont} {} 
-	{1ex} {} {}
-\titleformat{\subsection} [block] {\centering \itshape} {} 
-	{1ex} {} {}
-\titleformat{\subsubsection} [block] {\raggedright \itshape} {} 
-	{1ex} {} {}
+	{1ex} {\MakeUppercase} {\doublespacing}
+\titleformat{\section} [block] {\centering  \singlespacing \normalfont} {} 
+	{1ex} {} {\doublespacing}
+\titleformat{\subsection} [block] {\centering \singlespacing \itshape} {} 
+	{1ex} {} {\doublespacing}
+\titleformat{\subsubsection} [block] {\raggedright \singlespacing \itshape} {} 
+	{1ex} {} {\doublespacing}
 \setcounter{secnumdepth}{0}	% Don't print section numbers
 
 % Format table of contents, list of figures, and list of tables
@@ -101,8 +104,8 @@
 %{\thecontentslabel. }
 %{\hspace*{4.6em}} {\titlerule*[1pc]{.} \contentspage} []
 
-% Line spacing
-\RequirePackage{setspace}
+% Format bibliograph/list of references
+\renewcommand\bibname{LIST OF REFERENCES}
 
 % Default font size
 \renewcommand{\normalsize}{\fontsize{12}{12}\selectfont}
@@ -110,6 +113,7 @@
 % Captions
 \RequirePackage[format=plain, labelformat=simple, font=normalsize]{caption}
 \captionsetup[table]{justification=raggedright, singlelinecheck=false}
+\captionsetup[figure]{justification=raggedright, singlelinecheck=false}
 
 % Subfigures
 \RequirePackage{subfig}
@@ -176,13 +180,13 @@ Major Professor: \printadvisor
 \vspace{0.5cm}
 } {}
 
-\newenvironment{acknowledgements}
+\newenvironment{acknowledgments}
 {\newpage
-\label{ack_label} \pdfbookmark[0]{ACKNOWLEDGEMENTS}{ack_label}
+\label{ack_label} \pdfbookmark[0]{ACKNOWLEDGMENTS}{ack_label}
 \thispagestyle{plain}
 \begin{center}
 \vspace*{1.5cm}
-\Large \MakeUppercase{Acknowledgements}
+\Large \MakeUppercase{Acknowledgments}
 \end{center}
 \vspace{0.5cm}
 } {}

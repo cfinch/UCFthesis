@@ -119,7 +119,7 @@
 \RequirePackage{subfig}
 
 % Hyperlinks, including PDF bookmarks
-\RequirePackage{hyperref}
+\RequirePackage[hidelinks=True, bookmarksnumbered=True]{hyperref}
 
 % Title page commands
 \renewcommand{\title}[1]{\newcommand{\printtitle}{\MakeUppercase{#1}}}

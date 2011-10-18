@@ -122,7 +122,8 @@
 \RequirePackage{subfig}
 
 % Hyperlinks, including PDF bookmarks
-\RequirePackage[hidelinks, bookmarksnumbered=True]{hyperref}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{bookmark}
 
 % Title page commands
 \renewcommand{\title}[1]{\newcommand{\printtitle}{\MakeUppercase{#1}}}
@@ -173,22 +174,22 @@ Major Professor: \printadvisor
 
 \renewenvironment{abstract}
 {\newpage
-\label{abstract_label} \pdfbookmark[0]{ABSTRACT}{abstract_label}
 \thispagestyle{plain}
 \begin{center}
 \vspace*{1.5cm}
-\Large \MakeUppercase{Abstract}
+\bookmark[level=0, dest=abstract_label]{ABSTRACT}
+\hypertarget{abstract_label}{ABSTRACT}
 \end{center}
 \vspace{0.5cm}
 } {}
 
 \newenvironment{acknowledgments}
 {\newpage
-\label{ack_label} \pdfbookmark[0]{ACKNOWLEDGMENTS}{ack_label}
 \thispagestyle{plain}
 \begin{center}
 \vspace*{1.5cm}
-\Large \MakeUppercase{Acknowledgments}
+\bookmark[level=0, dest=ack_label]{ACKNOWLEDGMENTS}
+\hypertarget{ack_label}{ACKNOWLEDGMENTS}
 \end{center}
 \vspace{0.5cm}
 } {}

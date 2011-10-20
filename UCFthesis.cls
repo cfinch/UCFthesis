@@ -44,13 +44,19 @@
 \setcounter{secnumdepth}{0}	% Don't print section numbers
 
 % Format table of contents, list of figures, and list of tables
-
+% Double-space between entries, and single-space within long entries
 \RequirePackage[titles]{tocloft}
 \setcounter{tocdepth}{4}
 \RequirePackage{calc}   % Used to multiply baselineskip
 
 % Table of Contents
-\setlength{\cftbeforechapskip}{0pt}
+\addtocontents{toc}{\protect\sloppy} 
+
+\setlength{\cftbeforechapskip}{\baselineskip*\real{1.3}}
+\setlength{\cftbeforesecskip}{\baselineskip*\real{1.3}}
+\setlength{\cftbeforesubsecskip}{\baselineskip*\real{1.3}}
+\setlength{\cftbeforesubsubsecskip}{\baselineskip*\real{1.3}}
+
 \renewcommand{\cfttoctitlefont}{\hfill\Large\MakeUppercase}
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\contentsname}{Table of Contents}
@@ -65,7 +71,10 @@
 \addtolength{\cftchapnumwidth}{\chaplen} % add the extra space
 
 % List of Figures
-\setlength{\cftbeforefigskip}{\baselineskip*\real{0.0}} % 1.3
+\addtocontents{lof}{\protect\sloppy} 
+
+\setlength{\cftfigindent}{0pt}
+\setlength{\cftbeforefigskip}{\baselineskip*\real{1.3}}
 \renewcommand{\cftloftitlefont}{\hfill\Large\MakeUppercase}
 \renewcommand{\cftafterloftitle}{\hfill}
 \renewcommand{\listfigurename}{List of figures}
@@ -80,7 +89,10 @@
 \addtolength{\cftfignumwidth}{\figlen} % add the extra space
 
 % List of Tables
-\setlength{\cftbeforetabskip}{\baselineskip*\real{0.0}} % 1.3
+\addtocontents{lot}{\protect\sloppy} 
+
+\setlength{\cfttabindent}{0pt}
+\setlength{\cftbeforetabskip}{\baselineskip*\real{1.3}}
 \renewcommand{\cftlottitlefont}{\hfill\Large\MakeUppercase}
 \renewcommand{\cftafterlottitle}{\hfill}
 \renewcommand{\listtablename}{List of tables}
@@ -93,6 +105,18 @@
 \newlength{\tablen}	% a "scratch" length 
 \settowidth{\tablen}{\cfttabpresnum\cfttabaftersnum} % measure space
 \addtolength{\cfttabnumwidth}{\tablen} % add the extra space
+
+% Avoid extra space between tables/figures from different chapters
+% patchcmd from etoolbox patches the command in the report class that adds
+% the offending space in the lists
+\RequirePackage{etoolbox}
+\makeatletter
+\patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}%
+{\addtocontents{lof}{\protect\addvspace{0\p@}}}%
+{}%
+{}%
+\makeatother
+
 
 %% Format entries in TOC, List of Figures, and List of Tables
 %\RequirePackage{titletoc}
